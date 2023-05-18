@@ -20,6 +20,7 @@ namespace DP.States
 
         public bool ClickToPay()
         {
+            Console.WriteLine("The packing is after the payment");
             throw new NotImplementedException();
         }
 

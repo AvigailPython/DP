@@ -8,22 +8,27 @@ namespace DP.States
 {
     public class ProductSelectionState : State
     {
-        public Product ChooseProduct()
+        public void ChooseProduct()
         {
             throw new NotImplementedException();
         }
 
-        public bool ClickToGetBag()
+        public void ClickToGetBag()
         {
             throw new NotImplementedException();
         }
 
-        public bool ClickToPay()
+        public void ClickToPay()
         {
             throw new NotImplementedException();
         }
 
-        public bool ClickToWrap()
+        public void ClickToWrap()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product GetProduct()
         {
             throw new NotImplementedException();
         }

@@ -8,22 +8,30 @@ namespace DP.States
 {
     public class PackingState : State
     {
-        public Product ChooseProduct()
+        public void ChooseProduct()
+        {
+            Console.WriteLine("You cannot change the selection now!");
+
+            throw new NotImplementedException();
+        }
+
+        public void ClickToGetBag()
         {
             throw new NotImplementedException();
         }
 
-        public bool ClickToGetBag()
+        public void ClickToPay()
+        {
+            Console.WriteLine("You already paid!");
+            throw new NotImplementedException();
+        }
+
+        public void ClickToWrap()
         {
             throw new NotImplementedException();
         }
 
-        public bool ClickToPay()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool ClickToWrap()
+        public Product GetProduct()
         {
             throw new NotImplementedException();
         }

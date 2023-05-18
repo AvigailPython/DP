@@ -8,10 +8,11 @@ namespace DP.States
 {
     public interface State
     {
-        public Product ChooseProduct();
-        public bool ClickToPay();
-        public bool ClickToWrap();
-        public bool ClickToGetBag();
+        public void ChooseProduct();
+        public void ClickToPay();
+        public void ClickToWrap();
+        public void ClickToGetBag();
+        public Product GetProduct();
 
     }
 }
