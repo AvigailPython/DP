@@ -15,15 +15,30 @@ namespace DP
             Stock = new Stock();
             Stock.InitBamba(bambaAmount);
             Stock.InitBisli(bisliAmount);
-            Stock.InitDoritos(doritosAmount);   
-
+            Stock.InitDoritos(doritosAmount);
+            SoldProducts = new List<Product>();
         }
+        public List<Product> SoldProducts { get; set; }
         public Stock Stock { get; set; }
-
-
         public State MachineState { get; set; }
-        public void ChangeMachineState(State state) { MachineState = state; }  
-        public void MainMenu() {
+        public eProduct ChosenProduct { get; set; }
+
+
+        public void ChooseProduct() => MachineState.ChooseProduct();
+
+        public void ClickToPay() => MachineState.ClickToPay();
+
+
+        public void ClickToWrap() => MachineState.ClickToWrap();
+
+
+        public void ClickToGetBag() => MachineState.ClickToGetBag();
+
+        public Product GetProduct() => MachineState.GetProduct();
+
+        public void ChangeMachineState(State state) { MachineState = state; }
+        public void MainMenu()
+        {
             Console.WriteLine("שלום! מה תרצו לקנות? ");
             Console.WriteLine("חטיפים הקש 1");
             Console.WriteLine("שתיה קרה הקש 2");
@@ -53,9 +68,30 @@ namespace DP
                 {
                     case 0:
                         MainMenu();
-                        break ;
+                        break;
+                    case 1:
+                        ChosenProduct = eProduct.Bamba;
+                        break;
+                    case 2:
+                        ChosenProduct = eProduct.Bisli;
+                        break;
+                    case 3:
+                        ChosenProduct = eProduct.Doritos;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid input");
+                        MainMenu(); 
+                        break;
                 }
+                Console.WriteLine("Do you want to go to Payment? y/n");
+                string ifGoToPay =  Console.ReadLine();
+                if (ifGoToPay == "y")
+                    MachineState.ClickToPay();
+                else
+                    SnacksMenu();
             }
+
+
         }
         public void ColdDrinkMenu()
         {
@@ -94,9 +130,8 @@ namespace DP
 
         public void TurnOn()
         {
-            
-            MainMenu();
-                
+            MachineState = new ProductSelectionState(this);
+            MachineState.ChooseProduct();
         }
     }
 }

@@ -8,25 +8,28 @@ namespace DP.States
 {
     public class PaymentState : State
     {
-        public Product ChooseProduct()
+        public Machine Machine { get; set; }
+        public PaymentState(Machine machine)
         {
+            Machine  = machine;
+        }
+
+        public void ChooseProduct() => Machine.ChangeMachineState(new ProductSelectionState(Machine));
+
+        public void ClickToGetBag() => Console.WriteLine("קבלת שקית לאחר התשלום");
+
+        public void ClickToPay()
+        {
+            Console.WriteLine("");
             throw new NotImplementedException();
         }
 
-        public bool ClickToGetBag()
-        {
-            throw new NotImplementedException();
-        }
+        public void ClickToWrap() => Console.WriteLine("העטיפה אחרי התשלום");
 
-        public bool ClickToPay()
+        public Product GetProduct()
         {
-            Console.WriteLine("The packing is after the payment");
-            throw new NotImplementedException();
-        }
-
-        public bool ClickToWrap()
-        {
-            throw new NotImplementedException();
+            Console.WriteLine("המוצר עוד לא מוכן...");
+            return null;
         }
     }
 }

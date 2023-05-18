@@ -8,6 +8,7 @@ namespace DP.States
 {
     public interface State
     {
+        public Machine Machine { get; set; }
         public void ChooseProduct();
         public void ClickToPay();
         public void ClickToWrap();

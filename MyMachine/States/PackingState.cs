@@ -8,9 +8,15 @@ namespace DP.States
 {
     public class PackingState : State
     {
+        public Machine Machine { get ; set ; }
+        public PackingState(Machine machine)
+        {
+            Machine = machine;  
+        }
+
         public void ChooseProduct()
         {
-            Console.WriteLine("You cannot change the selection now!");
+            Console.WriteLine("אי אפשר לשנות בחירה לאחר התשלום");
 
             throw new NotImplementedException();
         }
@@ -22,7 +28,7 @@ namespace DP.States
 
         public void ClickToPay()
         {
-            Console.WriteLine("You already paid!");
+            Console.WriteLine("התשלום כבר בוצע!");
             throw new NotImplementedException();
         }
 
