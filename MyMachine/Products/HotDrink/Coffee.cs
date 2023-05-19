@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DP.Products
-{
-    public class BlackCoffee : RawMaterials
+namespace MyMachine.Products{
+    public class Coffee :HotDrink
     {
     }
 }

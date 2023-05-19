@@ -12,7 +12,13 @@ namespace MyMachine
     {
         Bamba,
         Bisli,
-        Doritos
+        Doritos,
+        Cola,
+        Juice,
+        Water,
+        Coffee,
+        Coco,
+        BlackCoffee
     }
     public class Stock
     {

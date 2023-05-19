@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DP.Products
 {
-    public class Coco : RawMaterials
+    public class CocoPowder : RawMaterials
     {
     }
 }

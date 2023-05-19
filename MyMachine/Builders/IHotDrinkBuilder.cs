@@ -1,4 +1,5 @@
 ﻿using DP.Products;
+using MyMachine.Products;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace DP.Builders
         public void PutWater();
         public void PutMilk();
         public void Mix();
-        public CupOfHotDrink GetResult();
+        public HotDrink GetResult();
 
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DP.Products
 {
-    public class CupOfHotDrink
+    public class BlackCoffeePowder : RawMaterials
     {
     }
 }

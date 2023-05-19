@@ -1,4 +1,5 @@
 ﻿using DP.Products;
+using MyMachine.Products;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,44 +10,40 @@ namespace DP.Builders
 {
     public class CocoBuilder : IHotDrinkBuilder
     {
-        public void GetResult()
-        {
-            throw new NotImplementedException();
-        }
+        public Coco CupOfCoco { get; set; }
+        public HotDrink GetResult() => CupOfCoco;
 
-        public void Mix()
-        {
-            throw new NotImplementedException();
-        }
+
+        public void Mix() => Console.WriteLine("mixing...");
+        
 
         public void PutMilk()
-        {
-            throw new NotImplementedException();
+        {   CupOfCoco.Milk = 100;
+            Console.WriteLine("putting 100ml of milk");
         }
 
+        
         public void PutPowder()
         {
-            throw new NotImplementedException();
+            CupOfCoco.Powder = 15;
+            Console.WriteLine("putting 15g of coco powder");
         }
 
         public void PutSugar()
         {
-            throw new NotImplementedException();
+            CupOfCoco.Sugar = 20;
+            Console.WriteLine("putting 20g of sugar");
         }
 
         public void PutWater()
         {
-            throw new NotImplementedException();
+            CupOfCoco.Water = 100;
+            Console.WriteLine("putting 100ml of water");
         }
 
         public void Reset()
         {
-            throw new NotImplementedException();
-        }
-
-        CupOfHotDrink IHotDrinkBuilder.GetResult()
-        {
-            throw new NotImplementedException();
+            CupOfCoco = new Coco();
         }
     }
 }
