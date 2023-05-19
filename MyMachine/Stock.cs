@@ -8,53 +8,69 @@ using System.Threading.Tasks;
 
 namespace MyMachine
 {
-    public enum eProduct
-    {
-        Bamba,
-        Bisli,
-        Doritos,
-        Cola,
-        Juice,
-        Water,
-        Coffee,
-        Coco,
-        BlackCoffee
-    }
     public class Stock
     {
         public void InitBamba(int amount)
         {
-            AmountDict[eProduct.Bamba] = amount;
-
             for (int i = 0; i < amount; i++)
             {
-                AllProducts.Add(new Bamba());
+                AllBambas.Add(new Bamba());
             }
         }
         public void InitBisli(int amount)
         {
-            AmountDict[eProduct.Bisli] = amount;
 
             for (int i = 0; i < amount; i++)
             {
-                AllProducts.Add(new Bisli());
+                AllBislis.Add(new Bisli());
             }
         }
         public void InitDoritos(int amount)
         {
-            AmountDict[eProduct.Doritos] = amount;
 
             for (int i = 0; i < amount; i++)
             {
-                AllProducts.Add(new Doritos());
+                AllDoritoses.Add(new Doritos());
             }
         }
-        public List<Product> AllProducts { get; set; }
-        public Dictionary<eProduct, double> AmountDict { get; set; }
+        public void InitCola(int amount)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                AllCola.Add(new Cola());
+            }
+        }
+        public void InitJuice(int amount)
+        {
+
+            for (int i = 0; i < amount; i++)
+            {
+                AllJuices.Add(new Juice());
+            }
+        }
+        public void InitWater(int amount)
+        {
+
+            for (int i = 0; i < amount; i++)
+            {
+                AllWater.Add(new Water());
+            }
+        }
+        public List<Bamba> AllBambas { get; set; }
+        public List<Bisli> AllBislis { get; set; }
+        public List<Doritos> AllDoritoses { get; set; }
+        public List<Cola> AllCola { get; set; }
+        public List<Juice> AllJuices { get; set; }
+        public List<Water> AllWater { get; set; }
         public Stock()
         {
-            AllProducts = new List<Product>();
-            AmountDict = new Dictionary<eProduct, double>();
+            AllBambas = new List<Bamba>();
+            AllBislis = new List<Bisli>();
+            AllDoritoses = new List<Doritos>();
+            AllCola = new List<Cola>();
+            AllJuices = new List<Juice>();
+            AllWater = new List<Water>();
+
         }
     }
 }

@@ -8,7 +8,6 @@ namespace DP
 {
     public abstract class Product
     {
-        public double Price { get; set; }
         public static int Id { get; set; }
         public Provider Provider { get; set; }
     }

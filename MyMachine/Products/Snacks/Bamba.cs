@@ -8,6 +8,6 @@ namespace DP.Products
 {
     public class Bamba : Snack
     {
-
+        public static double Price { get; set; }
     }
 }

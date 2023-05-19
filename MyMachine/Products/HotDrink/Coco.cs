@@ -8,4 +8,6 @@ namespace MyMachine.Products;
 
 public class Coco :HotDrink
 {
+    public static double Price { get; set; }
+
 }

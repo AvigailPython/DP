@@ -8,10 +8,7 @@ namespace DP.Products
 {
     public class Bisli : Snack
     {
-        public static int Qty { get; set; }
-        public Bisli()
-        {
-            Qty--;
-        }
+        public static double Price { get; set; }
+
     }
 }

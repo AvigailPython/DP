@@ -8,4 +8,6 @@ namespace MyMachine.Products;
 
 public class BlackCoffee : HotDrink
 {
+    public static double Price { get; set; }
+
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using MyMachine;
 namespace DP.States
 {
     public class PaymentState : State
@@ -19,9 +19,12 @@ namespace DP.States
         public void ClickToGetBag() => Console.WriteLine("קבלת שקית לאחר התשלום");
 
         public void ClickToPay()
-        {
-            Console.WriteLine("");
-            throw new NotImplementedException();
+        {   double
+            switch (Machine.ChosenProduct)
+            {
+                case eProduct.Bamba
+            }
+            Console.WriteLine($"Price: {Machine.ChosenProduct.Price}");
         }
 
         public void ClickToWrap() => Console.WriteLine("העטיפה אחרי התשלום");

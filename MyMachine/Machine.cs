@@ -24,7 +24,7 @@ namespace DP
         public List<Product> SoldProducts { get; set; }
         public Stock Stock { get; set; }
         public State MachineState { get; set; }
-        public eProduct ChosenProduct { get; set; }
+        public Prod ChosenProduct { get; set; }
         public HotDrinkMaker HotDrinkMaker { get; set; }
 
 
@@ -76,13 +76,13 @@ namespace DP
                         MainMenu();
                         break;
                     case 1:
-                        ChosenProduct = eProduct.Bamba;
+                        ChosenProduct = Stock.AllBambas[0];
                         break;
                     case 2:
-                        ChosenProduct = eProduct.Bisli;
+                        ChosenProduct = Stock.AllBislis[0];
                         break;
                     case 3:
-                        ChosenProduct = eProduct.Doritos;
+                        ChosenProduct = Stock.AllDoritoses[0];
                         break;
                     default:
                         Console.WriteLine("Invalid input");
@@ -114,13 +114,13 @@ namespace DP
                         MainMenu();
                         break;
                     case 1:
-                        ChosenProduct = eProduct.Cola;
+                        ChosenProduct = Stock.AllCola[0];
                         break;
                     case 2:
-                        ChosenProduct = eProduct.Juice;
+                        ChosenProduct = Stock.AllJuices[0];
                         break;
                     case 3:
-                        ChosenProduct = eProduct.Water;
+                        ChosenProduct = Stock.AllWater[0];
                         break;
                     default:
                         Console.WriteLine("Invalid input");
@@ -151,29 +151,32 @@ namespace DP
                         MainMenu();
                         break;
                     case 1:
-                        HotDrinkMaker.MakeHotDrink(new CoffeeBuilder());
+                        ChosenProduct = eProduct.Coffee;
                         break;
                     case 2:
-                        HotDrinkMaker.MakeCappuccino(new CoffeeBuilder());
+                        ChosenProduct = eProduct.Cuppucino;
                         break;
                     case 3:
-                        HotDrinkMaker.MakeHotDrink(new CocoBuilder());
+                        ChosenProduct = eProduct.Coco;
                         break;
                     case 4:
-                        HotDrinkMaker.MakeHotDrink(new BlackCoffeeBuilder());
+                        ChosenProduct = eProduct.BlackCoffee;
                         break;
                     default:
                         HotDrinkMenu();
                         break;
                 }
+                Console.WriteLine("Do you want to go to Payment? y/n");
+                string ifGoToPay = Console.ReadLine();
+                if (ifGoToPay == "y")
+                    MachineState.ClickToPay();
+                else
+                    HotDrinkMenu();
             }
-            Console.WriteLine("Do you want to go to Payment? y/n");
-            string ifGoToPay = Console.ReadLine();
-            if (ifGoToPay == "y")
-                MachineState.ClickToPay();
             else
                 HotDrinkMenu();
         }
+            
         public void TurnOn()
         {
             MachineState = new ProductSelectionState(this);
