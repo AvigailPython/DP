@@ -10,10 +10,6 @@ namespace DP.Products
     public class Cola : ColdDrink
        
     {
-        public static int Qty { get; set; }
-        public Cola()
-        {
-            Qty--;
-        }
+        public static double Price { get; set; }
     }
 }

@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace DP.States
 {
-    public interface State
+     public abstract class State
     {
         public Machine Machine { get; set; }
-        public void ChooseProduct();
-        public void ClickToPay();
-        public void ClickToWrap();
-        public void ClickToGetBag();
-        public Product GetProduct();
+        abstract public void ChooseProduct();
+        abstract public void ClickToPay();
+        abstract public void ClickToWrap(Product prduct);
+        abstract public Product GetProduct(Product product);
 
     }
 }

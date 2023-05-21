@@ -11,6 +11,8 @@ namespace DP.Builders
     public class CoffeeBuilder : IHotDrinkBuilder
     {
         public HotDrink CupOfCoffee { get; set; }
+        public Machine Machine { get; set ; }
+
         public HotDrink GetResult() => CupOfCoffee;
         public CoffeeBuilder()
         {
@@ -23,20 +25,23 @@ namespace DP.Builders
 
         public void PutMilk()
         {
-            CupOfCoffee.Milk = 150;
-            Console.WriteLine("putting 150ml of milk");
+            CupOfCoffee.Milk = 1;
+            Machine.Stock.AllMilk.RemoveAt(0);
+            Console.WriteLine("putting milk");
         }
 
         public void PutPowder()
         {
-            CupOfCoffee.Powder = 20;
-            Console.WriteLine("putting 20g of coffee powder");
+            CupOfCoffee.Powder = 1;
+            Machine.Stock.AllCoffePowder.RemoveAt(0);
+            Console.WriteLine("putting coffee powder");
         }
 
         public void PutSugar()
         {
-            CupOfCoffee.Sugar = 25;
-            Console.WriteLine("putting 25g of sugar");
+            CupOfCoffee.Sugar = 1;
+            Machine.Stock.AllSugar.RemoveAt(0);
+            Console.WriteLine("putting sugar");
         }
 
         public void PutWater()

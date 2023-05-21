@@ -10,29 +10,35 @@ namespace DP.Builders
 {
     public class CocoBuilder : IHotDrinkBuilder
     {
+        public Machine Machine { get; set; }
         public Coco CupOfCoco { get; set; }
         public HotDrink GetResult() => CupOfCoco;
+
 
 
         public void Mix() => Console.WriteLine("mixing...");
         
 
         public void PutMilk()
-        {   CupOfCoco.Milk = 100;
-            Console.WriteLine("putting 100ml of milk");
+        {
+            CupOfCoco.Milk = 1;
+            Machine.Stock.AllMilk.RemoveAt(0);
+            Console.WriteLine("putting milk");
         }
 
         
         public void PutPowder()
         {
-            CupOfCoco.Powder = 15;
-            Console.WriteLine("putting 15g of coco powder");
+            CupOfCoco.Powder = 1;
+            Machine.Stock.AllCoffePowder.RemoveAt(0);
+            Console.WriteLine("putting coco powder");
         }
 
         public void PutSugar()
         {
-            CupOfCoco.Sugar = 20;
-            Console.WriteLine("putting 20g of sugar");
+            CupOfCoco.Sugar = 1;
+            Machine.Stock.AllSugar.RemoveAt(0);
+            Console.WriteLine("putting sugar");
         }
 
         public void PutWater()

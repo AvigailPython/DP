@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,24 +9,23 @@ namespace DP.States
 {
     public class ProductSelectionState : State
     {
-        public Machine Machine { get; set; }
-        public ProductSelectionState(Machine machine)
-        {
-            Machine = machine;
-        }
+        //public Machine Machine { get; set; }
+        //public ProductSelectionState(Machine machine)
+        //{
+        //    Machine = machine;
+        //}
+       
 
-        public void ChooseProduct() =>  Machine.MainMenu();
-
-        public void ClickToGetBag() => Console.WriteLine("קבלת שקית לאחר התשלום");
+        public override  void ChooseProduct() =>  Machine.MainMenu();
     
 
-        public void ClickToPay() => Machine.ChangeMachineState(new PaymentState(Machine));
+        public override void ClickToPay() => Machine.ChangeMachineState(new PaymentState());
+
+        
+        public override void ClickToWrap(Product product) => Console.WriteLine("העטיפה אחרי התשלום");  
 
 
-        public void ClickToWrap() => Console.WriteLine("העטיפה אחרי התשלום");  
-
-
-        public Product GetProduct()
+        public override Product GetProduct(Product product)
         {
             Console.WriteLine("המוצר עוד לא מוכן...");
             return null;

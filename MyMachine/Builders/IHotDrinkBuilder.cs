@@ -10,6 +10,7 @@ namespace DP.Builders
 {
     public interface IHotDrinkBuilder
     {
+        public Machine Machine { get; set; }
         public void Reset();
         public void PutPowder();
         public void PutSugar();

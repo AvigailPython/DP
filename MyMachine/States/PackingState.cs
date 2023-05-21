@@ -8,38 +8,44 @@ namespace DP.States
 {
     public class PackingState : State
     {
-        public Machine Machine { get ; set ; }
-        public PackingState(Machine machine)
-        {
-            Machine = machine;  
-        }
+        //public Machine Machine { get ; set ; }
+        //public PackingState(Machine machine)
+        //{
+        //    Machine = machine;  
+        //}
 
-        public void ChooseProduct()
+        public override void ChooseProduct()
         {
             Console.WriteLine("אי אפשר לשנות בחירה לאחר התשלום");
 
             throw new NotImplementedException();
         }
 
-        public void ClickToGetBag()
-        {
-            throw new NotImplementedException();
-        }
+       
 
-        public void ClickToPay()
+        public override void ClickToPay()
         {
             Console.WriteLine("התשלום כבר בוצע!");
             throw new NotImplementedException();
         }
 
-        public void ClickToWrap()
+        public override void ClickToWrap(Product product)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Do you want to wrap your product? y/n");
+            string ifToWrap = Console.ReadLine();
+            if (ifToWrap == "y")
+                Console.WriteLine("Wrapping......");
+            Console.WriteLine("Do you want to get Bag for your product? y/n");
+            string ifToGetBag = Console.ReadLine();
+            if (ifToGetBag == "y")
+                Console.WriteLine("Get Bag......");
+            GetProduct(product);
         }
 
-        public Product GetProduct()
+        public override Product GetProduct(Product product)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Thank tou for for shopping with us");
+            return product;
         }
     }
 }

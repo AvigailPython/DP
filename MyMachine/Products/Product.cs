@@ -8,7 +8,20 @@ namespace DP
 {
     public abstract class Product
     {
-        public static int Id { get; set; }
-        public Provider Provider { get; set; }
+        public int Id { get; set; }
+        public List<Provider> Providers { get; set; }
+        public Product()
+        {
+            Providers = new List<Provider>();
+
+        }
+        public void AddProvider(Provider p)
+        {
+            Providers.Add(p);
+        }
+        public void RemoveProvider(Provider p)
+        {
+            Providers.Remove(Providers.Find(x => x.Id == p.Id));
+        }
     }
 }

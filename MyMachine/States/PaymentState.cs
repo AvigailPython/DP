@@ -3,36 +3,96 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DP.Builders;
 using MyMachine;
 namespace DP.States
 {
     public class PaymentState : State
     {
-        public Machine Machine { get; set; }
-        public PaymentState(Machine machine)
+
+        public override void ChooseProduct() => Machine.ChangeMachineState(new ProductSelectionState());
+
+
+        public override void ClickToPay()
         {
-            Machine  = machine;
-        }
-
-        public void ChooseProduct() => Machine.ChangeMachineState(new ProductSelectionState(Machine));
-
-        public void ClickToGetBag() => Console.WriteLine("קבלת שקית לאחר התשלום");
-
-        public void ClickToPay()
-        {   double
-            switch (Machine.ChosenProduct)
+            Console.WriteLine($"Price: {Machine.Stock.Prices[Machine.ChosenProduct]}");
+            Console.WriteLine("Back to the main menu press 0");
+            Console.WriteLine("Enter money for pay");
+            bool valiedInput = Int32.TryParse(Console.ReadLine(), out int input);
+            if (valiedInput)
             {
-                case eProduct.Bamba
+                if (input == 0)
+                {
+                    Machine.ChangeMachineState(new ProductSelectionState());
+                    Machine.MachineState.ChooseProduct();
+                }
+                if (input >= Machine.Stock.Prices[Machine.ChosenProduct])
+                {
+                    Console.WriteLine($"excess:{Machine.Stock.Prices[Machine.ChosenProduct] - input}");
+                    Machine.ChangeMachineState(new PackingState());
+                    Machine.MachineState.ClickToWrap(GetSoldProduct());
+                }
+                else
+                {
+                    ClickToPay();
+                }
             }
-            Console.WriteLine($"Price: {Machine.ChosenProduct.Price}");
         }
+            
 
-        public void ClickToWrap() => Console.WriteLine("העטיפה אחרי התשלום");
+        public override void ClickToWrap(Product product) => Console.WriteLine("העטיפה אחרי התשלום");
 
-        public Product GetProduct()
+        public override Product GetProduct(Product product)
         {
             Console.WriteLine("המוצר עוד לא מוכן...");
             return null;
         }
+
+        public  Product? GetSoldProduct()
+        {
+                Product sold = null;
+                switch (Machine.ChosenProduct)
+                {
+                    case eProduct.Bamba:
+                        sold = Machine.Stock.AllBambas[0];
+                        Machine.Stock.AllBambas.RemoveAt(0);
+                        break;
+                    case eProduct.Bisli:
+                        sold = Machine.Stock.AllBislis[0];
+                        Machine.Stock.AllBislis.RemoveAt(0);
+                        break;
+                    case eProduct.Doritos:
+                        sold = Machine.Stock.AllDoritoses[0];
+                        Machine.Stock.AllDoritoses.RemoveAt(0);
+                        break;
+                    case eProduct.Cola:
+                        sold = Machine.Stock.AllCola[0];
+                        Machine.Stock.AllCola.RemoveAt(0);
+                        break;
+                    case eProduct.Juice:
+                        sold = Machine.Stock.AllJuices[0];
+                        Machine.Stock.AllJuices.RemoveAt(0);
+                        break;
+                    case eProduct.Water:
+                        sold = Machine.Stock.AllWater[0];
+                        Machine.Stock.AllWater.RemoveAt(0);
+                        break;
+                    case eProduct.Coffee:
+                        sold = Machine.HotDrinkMaker.MakeHotDrink(new CoffeeBuilder());
+                        break;
+                    case eProduct.BlackCoffee:
+                        sold = Machine.HotDrinkMaker.MakeHotDrink(new BlackCoffeeBuilder());
+                        break;
+                    case eProduct.Cappucino:
+                        sold = Machine.HotDrinkMaker.MakeCappuccino(new CoffeeBuilder());
+                        break;
+                    case eProduct.Coco:
+                        Machine.HotDrinkMaker.MakeHotDrink(new CocoBuilder());
+                        break;
+                }
+            return sold;
+         }
+        
+        }
     }
-}
+

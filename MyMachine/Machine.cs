@@ -12,27 +12,35 @@ namespace DP
 {
     public class Machine
     {
-        public Machine(int bambaAmount, int bisliAmount, int doritosAmount)
+        public Machine(int bambaAmount, int bisliAmount, int doritosAmount, int colaAmount, int juiceAmount, int waterAmount, int coffeePowderAmount, int blackCoffeePowderAmount,
+            int cocoPowderAmount, int sugarAmount, int milkAmount)
         {
             Stock = new Stock();
             Stock.InitBamba(bambaAmount);
             Stock.InitBisli(bisliAmount);
             Stock.InitDoritos(doritosAmount);
+            Stock.InitCola(colaAmount);
+            Stock.InitJuice(juiceAmount);
+            Stock.InitWater(waterAmount);
+            Stock.InitCoffeePowder(coffeePowderAmount);
+            Stock.InitBlackCoffeePowder(blackCoffeePowderAmount);
+            Stock.InitCocoPowder(cocoPowderAmount);
+            Stock.InitSugar(sugarAmount);
+            Stock.InitMilk(milkAmount);
             SoldProducts = new List<Product>();
             HotDrinkMaker = new HotDrinkMaker();    
         }
         public List<Product> SoldProducts { get; set; }
         public Stock Stock { get; set; }
         public State MachineState { get; set; }
-        public Prod ChosenProduct { get; set; }
+        public eProduct ChosenProduct { get; set; }
         public HotDrinkMaker HotDrinkMaker { get; set; }
 
 
         public void ChooseProduct() => MachineState.ChooseProduct();
         public void ClickToPay() => MachineState.ClickToPay();
-        public void ClickToWrap() => MachineState.ClickToWrap();
-        public void ClickToGetBag() => MachineState.ClickToGetBag();
-        public Product GetProduct() => MachineState.GetProduct();
+        public void ClickToWrap(Product product) => MachineState.ClickToWrap(product);
+        public Product GetProduct(Product product) => MachineState.GetProduct(product);
         public void ChangeMachineState(State state) { MachineState = state; }
         public void MainMenu()
         {
@@ -63,10 +71,10 @@ namespace DP
         }
         public void SnacksMenu()
         {
-            Console.WriteLine("לבמבה הקש 1");
-            Console.WriteLine("לבסלי הקש 2");
-            Console.WriteLine("לדוריטוס הקש 3");
-            Console.WriteLine("לחזרה לתפריט הראשי הקש 0");
+            Console.WriteLine("for bamba press 1");
+            Console.WriteLine("for bisli press 2");
+            Console.WriteLine("for doritos press 3");
+            Console.WriteLine("Back to the main menu press 0");
             bool valiedInput = Int32.TryParse(Console.ReadLine(), out int input);
             if (valiedInput)
             {
@@ -76,13 +84,13 @@ namespace DP
                         MainMenu();
                         break;
                     case 1:
-                        ChosenProduct = Stock.AllBambas[0];
+                        ChosenProduct = eProduct.Bamba;
                         break;
                     case 2:
-                        ChosenProduct = Stock.AllBislis[0];
+                        ChosenProduct = eProduct.Bisli;
                         break;
                     case 3:
-                        ChosenProduct = Stock.AllDoritoses[0];
+                        ChosenProduct = eProduct.Doritos;
                         break;
                     default:
                         Console.WriteLine("Invalid input");
@@ -101,10 +109,10 @@ namespace DP
         }
         public void ColdDrinkMenu()
         {
-            Console.WriteLine("לקולה הקש 1");
-            Console.WriteLine("למיץ הקש 2");
-            Console.WriteLine("למים הקש 3");
-            Console.WriteLine("לחזרה לתפריט הראשי הקש 0");
+            Console.WriteLine("for cola press 1");
+            Console.WriteLine("for juice 2");
+            Console.WriteLine("for water press 3");
+            Console.WriteLine("Back to the main menu press 0");
             bool valiedInput = Int32.TryParse(Console.ReadLine(), out int input);
             if (valiedInput)
             {
@@ -114,13 +122,13 @@ namespace DP
                         MainMenu();
                         break;
                     case 1:
-                        ChosenProduct = Stock.AllCola[0];
+                        ChosenProduct = eProduct.Cola;
                         break;
                     case 2:
-                        ChosenProduct = Stock.AllJuices[0];
+                        ChosenProduct = eProduct.Juice;
                         break;
                     case 3:
-                        ChosenProduct = Stock.AllWater[0];
+                        ChosenProduct = eProduct.Water;
                         break;
                     default:
                         Console.WriteLine("Invalid input");
@@ -129,7 +137,7 @@ namespace DP
                 }
                 Console.WriteLine("Do you want to go to Payment? y/n");
                 string ifGoToPay = Console.ReadLine();
-                if (ifGoToPay == "y")
+                if (ifGoToPay.Equals("y"))
                     MachineState.ClickToPay();
                 else
                     ColdDrinkMenu();
@@ -154,7 +162,7 @@ namespace DP
                         ChosenProduct = eProduct.Coffee;
                         break;
                     case 2:
-                        ChosenProduct = eProduct.Cuppucino;
+                        ChosenProduct = eProduct.Cappucino;
                         break;
                     case 3:
                         ChosenProduct = eProduct.Coco;
@@ -179,7 +187,7 @@ namespace DP
             
         public void TurnOn()
         {
-            MachineState = new ProductSelectionState(this);
+            MachineState = new ProductSelectionState();
             MachineState.ChooseProduct();
         }
     }

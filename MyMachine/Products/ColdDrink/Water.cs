@@ -8,10 +8,6 @@ namespace DP.Products
 {
     public class Water : ColdDrink
     {
-        public static int Qty { get; set; }
-        public Water()
-        {
-            Qty--;
-        }
+        public static double Price { get; set; }
     }
 }
