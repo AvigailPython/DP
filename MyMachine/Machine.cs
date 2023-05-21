@@ -41,7 +41,7 @@ namespace DP
         public void ClickToPay() => MachineState.ClickToPay();
         public void ClickToWrap(Product product) => MachineState.ClickToWrap(product);
         public Product GetProduct(Product product) => MachineState.GetProduct(product);
-        public void ChangeMachineState(State state) { MachineState = state; }
+        public void ChangeMachineState(State state) { MachineState = state; MachineState.Machine = this; }
         public void MainMenu()
         {
             Console.WriteLine("Hi! What would you like to buy?");
@@ -187,7 +187,7 @@ namespace DP
             
         public void TurnOn()
         {
-            MachineState = new ProductSelectionState();
+            ChangeMachineState(new ProductSelectionState());
             MachineState.ChooseProduct();
         }
     }

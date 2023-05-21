@@ -17,9 +17,9 @@ namespace DP.States
        
 
         public override  void ChooseProduct() =>  Machine.MainMenu();
-    
 
-        public override void ClickToPay() => Machine.ChangeMachineState(new PaymentState());
+
+        public override void ClickToPay() { Machine.ChangeMachineState(new PaymentState()); Machine.MachineState.ClickToPay(); }
 
         
         public override void ClickToWrap(Product product) => Console.WriteLine("העטיפה אחרי התשלום");  

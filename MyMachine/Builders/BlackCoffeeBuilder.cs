@@ -14,6 +14,10 @@ namespace DP.Builders
         public Machine Machine { get ; set ; }
 
         public HotDrink GetResult() => CupOfBlackCoffee;
+        public BlackCoffeeBuilder()
+        {
+            CupOfBlackCoffee = new HotDrink();
+        }
 
         public void Mix() => Console.WriteLine("mixing...");
 

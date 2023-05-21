@@ -14,7 +14,10 @@ namespace DP.Builders
         public Coco CupOfCoco { get; set; }
         public HotDrink GetResult() => CupOfCoco;
 
-
+        public CocoBuilder()
+        {
+            CupOfCoco = new Coco();
+        }
 
         public void Mix() => Console.WriteLine("mixing...");
         
