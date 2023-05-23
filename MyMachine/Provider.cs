@@ -12,7 +12,7 @@ namespace DP
         public string Name { get; set; }
         public void UpdateAmount(int amount, Product p)
         {
-            Console.WriteLine($"You have {amount} units from {nameof(p)}");
+            Console.WriteLine($"You have {amount} units from {p.Name}");
         }
     }
 }

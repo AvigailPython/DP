@@ -24,5 +24,9 @@ namespace DP
         {
             Providers.Remove(Providers.Find(x => x.Id == p.Id));
         }
+        public void NotifyProviders(int amount)
+        {
+            Providers.ForEach(p => p.UpdateAmount(amount,this));
+        }
     }
 }

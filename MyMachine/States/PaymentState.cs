@@ -28,7 +28,8 @@ namespace DP.States
                 }
                 if (input >= Machine.Stock.Prices[Machine.ChosenProduct])
                 {
-                    Console.WriteLine($"excess:{Machine.Stock.Prices[Machine.ChosenProduct] - input}");
+                    Console.WriteLine($"excess:{input -Machine.Stock.Prices[Machine.ChosenProduct]}");
+                    //if(Machine.Stock.AllBambas.Count() == )
                     Machine.ChangeMachineState(new PackingState());
                     Machine.MachineState.ClickToWrap(GetSoldProduct());
                 }
