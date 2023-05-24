@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DP.Builders;
+using DP.Products;
 using DP.States;
 using MyMachine;
 using MyMachine.Builders;
@@ -12,21 +13,21 @@ namespace DP
 {
     public class Machine
     {
-        public Machine(int bambaAmount, int bisliAmount, int doritosAmount, int colaAmount, int juiceAmount, int waterAmount, int coffeePowderAmount, int blackCoffeePowderAmount,
-            int cocoPowderAmount, int sugarAmount, int milkAmount)
+        public Machine()
         {
             Stock = new Stock();
-            Stock.InitBamba(bambaAmount);
-            Stock.InitBisli(bisliAmount);
-            Stock.InitDoritos(doritosAmount);
-            Stock.InitCola(colaAmount);
-            Stock.InitJuice(juiceAmount);
-            Stock.InitWater(waterAmount);
-            Stock.InitCoffeePowder(coffeePowderAmount);
-            Stock.InitBlackCoffeePowder(blackCoffeePowderAmount);
-            Stock.InitCocoPowder(cocoPowderAmount);
-            Stock.InitSugar(sugarAmount);
-            Stock.InitMilk(milkAmount);
+            Stock.InitProduct<Bamba>(eProduct.Bamba, 20);
+            Stock.InitProduct<Bisli>(eProduct.Bisli, 20);
+            Stock.InitProduct<Doritos>(eProduct.Doritos, 20);
+            Stock.InitProduct<Cola>(eProduct.Cola, 20);
+            Stock.InitProduct<Juice>(eProduct.Juice, 20);
+            Stock.InitProduct<Water>(eProduct.Water, 20);
+            Stock.InitProduct<Sugar>(eRawMaterials.Sugar, 20);
+            Stock.InitProduct<CoffeePowder>(eRawMaterials.CoffeePowder, 20);
+            Stock.InitProduct<CocoPowder>(eRawMaterials.CocoPowder, 20);
+            Stock.InitProduct<BlackCoffeePowder>(eRawMaterials.BlckCoffeePowder, 20);
+            Stock.InitProduct<Milk>(eRawMaterials.Milk, 20);
+
             SoldProducts = new List<Product>();
             HotDrinkMaker = new HotDrinkMaker();    
         }

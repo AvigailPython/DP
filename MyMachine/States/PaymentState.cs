@@ -51,33 +51,34 @@ namespace DP.States
 
         public  Product? GetSoldProduct()
         {
-                Product sold = null;
+            Product sold = null;
+
                 switch (Machine.ChosenProduct)
                 {
-                    case eProduct.Bamba:
-                        sold = Machine.Stock.AllBambas[0];
-                        Machine.Stock.AllBambas.RemoveAt(0);
-                        break;
-                    case eProduct.Bisli:
-                        sold = Machine.Stock.AllBislis[0];
-                        Machine.Stock.AllBislis.RemoveAt(0);
-                        break;
-                    case eProduct.Doritos:
-                        sold = Machine.Stock.AllDoritoses[0];
-                        Machine.Stock.AllDoritoses.RemoveAt(0);
-                        break;
-                    case eProduct.Cola:
-                        sold = Machine.Stock.AllCola[0];
-                        Machine.Stock.AllCola.RemoveAt(0);
-                        break;
-                    case eProduct.Juice:
-                        sold = Machine.Stock.AllJuices[0];
-                        Machine.Stock.AllJuices.RemoveAt(0);
-                        break;
-                    case eProduct.Water:
-                        sold = Machine.Stock.AllWater[0];
-                        Machine.Stock.AllWater.RemoveAt(0);
-                        break;
+                    //case eProduct.Bamba:
+                    //    sold = Machine.Stock.AllBambas[0];
+                    //    Machine.Stock.AllBambas.RemoveAt(0);
+                    //    break;
+                    //case eProduct.Bisli:
+                    //    sold = Machine.Stock.AllBislis[0];
+                    //    Machine.Stock.AllBislis.RemoveAt(0);
+                    //    break;
+                    //case eProduct.Doritos:
+                    //    sold = Machine.Stock.AllDoritoses[0];
+                    //    Machine.Stock.AllDoritoses.RemoveAt(0);
+                    //    break;
+                    //case eProduct.Cola:
+                    //    sold = Machine.Stock.AllCola[0];
+                    //    Machine.Stock.AllCola.RemoveAt(0);
+                    //    break;
+                    //case eProduct.Juice:
+                    //    sold = Machine.Stock.AllJuices[0];
+                    //    Machine.Stock.AllJuices.RemoveAt(0);
+                    //    break;
+                    //case eProduct.Water:
+                    //    sold = Machine.Stock.AllWater[0];
+                    //    Machine.Stock.AllWater.RemoveAt(0);
+                    //    break;
                     case eProduct.Coffee:
                         sold = Machine.HotDrinkMaker.MakeHotDrink(new CoffeeBuilder());
                         break;
@@ -90,7 +91,13 @@ namespace DP.States
                     case eProduct.Coco:
                         Machine.HotDrinkMaker.MakeHotDrink(new CocoBuilder());
                         break;
+                    default:
+                        sold = Machine.Stock.AllProducts[Machine.ChosenProduct][0];
+                        Machine.Stock.AllProducts[Machine.ChosenProduct].RemoveAt(0);
+                    break;
                 }
+
+           
             return sold;
          }
         

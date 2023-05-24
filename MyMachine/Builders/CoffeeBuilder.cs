@@ -1,4 +1,5 @@
 ﻿using DP.Products;
+using MyMachine;
 using MyMachine.Products;
 using System;
 using System.Collections.Generic;
@@ -26,21 +27,21 @@ namespace DP.Builders
         public void PutMilk()
         {
             CupOfCoffee.Milk = 1;
-            Machine.Stock.AllMilk.RemoveAt(0);
+            Machine.Stock.AllRawMaterials[eRawMaterials.Milk].RemoveAt(0);
             Console.WriteLine("putting milk");
         }
 
         public void PutPowder()
         {
             CupOfCoffee.Powder = 1;
-            Machine.Stock.AllCoffePowder.RemoveAt(0);
+            Machine.Stock.AllRawMaterials[eRawMaterials.CoffeePowder].RemoveAt(0);
             Console.WriteLine("putting coffee powder");
         }
 
         public void PutSugar()
         {
             CupOfCoffee.Sugar = 1;
-            Machine.Stock.AllSugar.RemoveAt(0);
+            Machine.Stock.AllRawMaterials[eRawMaterials.Sugar].RemoveAt(0);
             Console.WriteLine("putting sugar");
         }
 
