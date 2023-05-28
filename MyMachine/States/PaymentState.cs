@@ -9,8 +9,11 @@ namespace DP.States
 {
     public class PaymentState : State
     {
+        public PaymentState(Machine machine) : base(machine)
+        {
+        }
 
-        public override void ChooseProduct() => Machine.ChangeMachineState(new ProductSelectionState());
+        public override void ChooseProduct() => Machine.ChangeMachineState(new ProductSelectionState(Machine));
 
 
         public override void ClickToPay()
@@ -23,15 +26,20 @@ namespace DP.States
             {
                 if (input == 0)
                 {
-                    Machine.ChangeMachineState(new ProductSelectionState());
+                    Machine.ChangeMachineState(new ProductSelectionState(Machine));
                     Machine.MachineState.ChooseProduct();
                 }
                 if (input >= Machine.Stock.Prices[Machine.ChosenProduct])
                 {
                     Console.WriteLine($"excess:{input -Machine.Stock.Prices[Machine.ChosenProduct]}");
-                    //if(Machine.Stock.AllBambas.Count() == )
-                    Machine.ChangeMachineState(new PackingState());
-                    Machine.MachineState.ClickToWrap(GetSoldProduct());
+                    if (Machine.Stock.AllProducts[Machine.ChosenProduct].Products.Count() == Machine.Stock.AllProducts[Machine.ChosenProduct].MinAmount)
+                    {
+                        Machine.Stock.AllProducts[Machine.ChosenProduct].NotifyProviders();
+                    }
+                    Product p = GetSoldProduct();
+                    Machine.SoldProducts.Add(p);
+                    Machine.ChangeMachineState(new PackingState(Machine));
+                    Machine.MachineState.ClickToWrap(p);
                 }
                 else
                 {

@@ -9,17 +9,21 @@ namespace DP.States
 {
     public class ProductSelectionState : State
     {
+        public ProductSelectionState(Machine machine) : base(machine)
+        {
+        }
+
         //public Machine Machine { get; set; }
         //public ProductSelectionState(Machine machine)
         //{
         //    Machine = machine;
         //}
-       
+
 
         public override  void ChooseProduct() =>  Machine.MainMenu();
 
 
-        public override void ClickToPay() { Machine.ChangeMachineState(new PaymentState()); Machine.MachineState.ClickToPay(); }
+        public override void ClickToPay() { Machine.ChangeMachineState(new PaymentState(Machine)); Machine.MachineState.ClickToPay(); }
 
         
         public override void ClickToWrap(Product product) => Console.WriteLine("העטיפה אחרי התשלום");  

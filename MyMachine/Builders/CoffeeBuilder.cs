@@ -11,13 +11,13 @@ namespace DP.Builders
 {
     public class CoffeeBuilder : IHotDrinkBuilder
     {
-        public HotDrink CupOfCoffee { get; set; }
+        public Coffee CupOfCoffee { get; set; }
         public Machine Machine { get; set ; }
 
         public HotDrink GetResult() => CupOfCoffee;
         public CoffeeBuilder()
         {
-            CupOfCoffee = new HotDrink();
+            CupOfCoffee = new Coffee();
         }
         
 

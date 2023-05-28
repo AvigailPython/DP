@@ -10,9 +10,9 @@ namespace DP
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public void UpdateAmount(int amount, Product p)
+        public void UpdateAmount(int amount)
         {
-            Console.WriteLine($"You have {amount} units from {p.Name}");
+            Console.WriteLine($"You have {amount} units ");
         }
     }
 }

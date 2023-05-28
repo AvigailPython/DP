@@ -11,7 +11,7 @@ namespace DP.Builders
 {
     public class BlackCoffeeBuilder : IHotDrinkBuilder
     {
-        public HotDrink CupOfBlackCoffee { get; set; }
+        public BlackCoffee CupOfBlackCoffee { get; set; }
         public Machine Machine { get ; set ; }
 
         public HotDrink GetResult() => CupOfBlackCoffee;

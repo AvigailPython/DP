@@ -8,6 +8,10 @@ namespace DP.States
 {
     public class PackingState : State
     {
+        public PackingState(Machine machine) : base(machine)
+        {
+        }
+
         //public Machine Machine { get ; set ; }
         //public PackingState(Machine machine)
         //{

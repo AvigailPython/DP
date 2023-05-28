@@ -7,7 +7,9 @@ using DP.Builders;
 using DP.Products;
 using DP.States;
 using MyMachine;
+using MyMachine.AllStock;
 using MyMachine.Builders;
+using MyMachine.Stock;
 
 namespace DP
 {
@@ -42,7 +44,7 @@ namespace DP
         public void ClickToPay() => MachineState.ClickToPay();
         public void ClickToWrap(Product product) => MachineState.ClickToWrap(product);
         public Product GetProduct(Product product) => MachineState.GetProduct(product);
-        public void ChangeMachineState(State state) { MachineState = state; MachineState.Machine = this; }
+        public void ChangeMachineState(State state) { MachineState = state;}
         public void MainMenu()
         {
             Console.WriteLine("Hi! What would you like to buy?");
@@ -56,17 +58,19 @@ namespace DP
                 {
                     case 1:
                         SnacksMenu();
-                        break;
+                        return;
                     case 2:
                         ColdDrinkMenu();
-                        break;
+                        return;
                     case 3:
                         HotDrinkMenu();
-                        break;  
+                        return;  
                     default:
                         MainMenu();
-                        break;
+                        return;
+                        
                 }
+                
             }
 
         }
@@ -83,7 +87,7 @@ namespace DP
                 {
                     case 0:
                         MainMenu();
-                        break;
+                        return;
                     case 1:
                         ChosenProduct = eProduct.Bamba;
                         break;
@@ -96,14 +100,17 @@ namespace DP
                     default:
                         Console.WriteLine("Invalid input");
                         SnacksMenu(); 
-                        break;
+                        return;
                 }
                 Console.WriteLine("Do you want to go to Payment? y/n");
                 string ifGoToPay =  Console.ReadLine();
                 if (ifGoToPay == "y")
                     MachineState.ClickToPay();
                 else
+                {
                     SnacksMenu();
+                    return;
+                }
             }
 
 
@@ -121,7 +128,7 @@ namespace DP
                 {
                     case 0:
                         MainMenu();
-                        break;
+                        return;
                     case 1:
                         ChosenProduct = eProduct.Cola;
                         break;
@@ -134,14 +141,17 @@ namespace DP
                     default:
                         Console.WriteLine("Invalid input");
                         ColdDrinkMenu();
-                        break;
+                        return;
                 }
                 Console.WriteLine("Do you want to go to Payment? y/n");
                 string ifGoToPay = Console.ReadLine();
                 if (ifGoToPay.Equals("y"))
                     MachineState.ClickToPay();
                 else
+                {
                     ColdDrinkMenu();
+                    return ;
+                }
             }
         }
         public void HotDrinkMenu()
@@ -158,7 +168,7 @@ namespace DP
                 {
                     case 0:
                         MainMenu();
-                        break;
+                        return;
                     case 1:
                         ChosenProduct = eProduct.Coffee;
                         break;
@@ -173,22 +183,28 @@ namespace DP
                         break;
                     default:
                         HotDrinkMenu();
-                        break;
+                        return;
                 }
                 Console.WriteLine("Do you want to go to Payment? y/n");
                 string ifGoToPay = Console.ReadLine();
                 if (ifGoToPay == "y")
                     MachineState.ClickToPay();
                 else
+                {
                     HotDrinkMenu();
+                    return;
+                }
             }
             else
+            {
                 HotDrinkMenu();
+                return;
+            }
         }
             
         public void TurnOn()
         {
-            ChangeMachineState(new ProductSelectionState());
+            ChangeMachineState(new ProductSelectionState(this));
             MachineState.ChooseProduct();
         }
     }
