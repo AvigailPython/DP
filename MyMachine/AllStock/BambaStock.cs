@@ -14,4 +14,5 @@ namespace MyMachine.Stock.Stock
         {
         }
     }
+
 }
