@@ -46,14 +46,14 @@ public class Stock
             { eProduct.BlackCoffee, BlackCoffee.Price }
 
         };
-        //AllProducts = new Dictionary<eProduct, ProductStock<Product>> {
-        //    { eProduct.Bamba, new BambaStock(3)},
-        //    { eProduct.Bisli, new BisliStock()},
-        //    { eProduct.Doritos,new DoritosStock() },
-        //    { eProduct.Cola, new ColaStock() },
-        //    { eProduct.Juice, new JuiceStock()},
-        //    { eProduct.Water,new WaterStock()},
-        //};
+        AllProducts = new Dictionary<eProduct, ProductStock<Product>> {
+            { eProduct.Bamba, new BambaStock(3)},
+            { eProduct.Bisli, new BisliStock(1)},
+            { eProduct.Doritos,new DoritosStock(2) },
+            { eProduct.Cola, new ColaStock(3) },
+            { eProduct.Juice, new JuiceStock(8)},
+            { eProduct.Water,new WaterStock(2)},
+        };
         AllProducts = new Dictionary<eProduct, ProductStock<Product>>();
         AllProducts.Add(eProduct.Bamba, new ProductStock<Product>(3));
         AllRawMaterials = new Dictionary<eRawMaterials, List<Product>> {
