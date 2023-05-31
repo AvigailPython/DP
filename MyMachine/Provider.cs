@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DP
 {
-    public class Provider
+    public class Provider : IUpdateAmount
     {
         public string Id { get; set; }
         public string Name { get; set; }

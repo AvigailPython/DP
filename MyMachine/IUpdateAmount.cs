@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyMachine.AllStock
+namespace DP
 {
-    public interface IProductStock<out T> {
-        
+    public interface IUpdateAmount
+    {
+        public void UpdateAmount(int amount);
     }
-  
 }
