@@ -17,7 +17,7 @@ namespace DP.Builders
         public HotDrink GetResult() => CupOfBlackCoffee;
         public BlackCoffeeBuilder()
         {
-            CupOfBlackCoffee = new HotDrink();
+            CupOfBlackCoffee = new BlackCoffee();
         }
 
         public void Mix() => Console.WriteLine("mixing...");

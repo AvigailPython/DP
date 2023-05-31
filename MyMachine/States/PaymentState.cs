@@ -13,6 +13,7 @@ namespace DP.States
         {
         }
 
+
         public override void ChooseProduct() => Machine.ChangeMachineState(new ProductSelectionState(Machine));
 
 

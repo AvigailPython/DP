@@ -10,7 +10,7 @@ namespace MyMachine.ReportDecoraor
 {
     public class TXTReport : IReport
     {
-        public const string PATH = "H:\\DP\\MyMachine\\MyMachine\\ReportDecoraor\\DailyReport.txt";
+        public const string PATH = "...\\...\\...\\...\\...\\DailyReport.txt";
 
         public void WriteReport(List<Product> soldProducts)
         {

@@ -1,4 +1,5 @@
 ﻿using DP;
+using MyMachine.AllStock;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyMachine.Stock.Stock
 {
-    public class ProductStock<T> where T : Product, new()
+    public class ProductStock<T> : IProductStock<T> where T : Product, new()
     {
         public  List<T> Products { get; set; }
         public  List<Provider> Providers { get; set; }

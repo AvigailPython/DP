@@ -18,18 +18,6 @@ namespace DP
         public Machine()
         {
             Stock = new Stock();
-            Stock.InitProduct<Bamba>(eProduct.Bamba, 20);
-            Stock.InitProduct<Bisli>(eProduct.Bisli, 20);
-            Stock.InitProduct<Doritos>(eProduct.Doritos, 20);
-            Stock.InitProduct<Cola>(eProduct.Cola, 20);
-            Stock.InitProduct<Juice>(eProduct.Juice, 20);
-            Stock.InitProduct<Water>(eProduct.Water, 20);
-            Stock.InitProduct<Sugar>(eRawMaterials.Sugar, 20);
-            Stock.InitProduct<CoffeePowder>(eRawMaterials.CoffeePowder, 20);
-            Stock.InitProduct<CocoPowder>(eRawMaterials.CocoPowder, 20);
-            Stock.InitProduct<BlackCoffeePowder>(eRawMaterials.BlckCoffeePowder, 20);
-            Stock.InitProduct<Milk>(eRawMaterials.Milk, 20);
-
             SoldProducts = new List<Product>();
             HotDrinkMaker = new HotDrinkMaker();    
         }
